@@ -3,12 +3,13 @@ import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 import { getShopsData } from "../data/shopsData";
 import { useEffect, useState } from "react";
+import { realmLogin, watchCollection } from "../data/shopsData_live";
 
 const PieChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [data, setData] = useState([]);
+  const [shopData, setShopData] = useState([]);
 
   useEffect(() => {
     getShopsData().then((shops) => {
@@ -16,13 +17,42 @@ const PieChart = ({ isDashboard = false }) => {
         id: shop.ShopName,
         value: shop.Revenue,
       }));
-      setData(formattedData);
+      setShopData(formattedData);
     });
   }, []);
 
+  useEffect(() => {
+    if (shopData.length > 0) {
+    const fetchData = async () => {
+      const user = await realmLogin();
+      if (user) {
+        await watchCollection((updatedShop) => {
+          console.log('updatedShop', updatedShop);
+          console.log('shopData', shopData);
+          const updatedShopIndex = shopData.findIndex((shop) => {
+            console.log("shopID: ", shop.id);
+            return shop.id === updatedShop.ShopName;
+          });
+          console.log('updatedShopIndex', updatedShopIndex);
+          if (updatedShopIndex >= 0) {
+            const updatedData = [...shopData];
+            updatedData[updatedShopIndex] = {
+              id: updatedShop.ShopName,
+              value: updatedShop.Revenue,
+            };
+            console.log('updatedData', updatedData);
+            setShopData(updatedData);
+          }
+        });
+      }
+    };
+    fetchData();
+    }
+  }, [shopData]);
+
   return (
     <ResponsivePie
-      data={data}
+      data={shopData}
       theme={{
         axis: {
           domain: {
