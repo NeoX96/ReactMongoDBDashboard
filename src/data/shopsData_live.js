@@ -53,37 +53,41 @@ async function getMongoCollection() {
 
 
 /**
- * Überwacht eine MongoDB-Sammlung auf Änderungen und führt eine angegebene Funktion aus, wenn eine Änderung auftritt.
- *
- * @param {function} onChange - Eine Funktion, die ausgeführt wird, wenn eine Änderung in der Sammlung auftritt. Die aktualisierten Daten werden als Argument an die Funktion übergeben.
- * @returns {function} Eine Funktion, die den Änderungsstrom schließt.
+ * Watch a MongoDB collection for changes and call the onChange function when a document changes.
+ * @param {function} onChange - Function to call when a document changes.
+ * @returns {function} Function to stop watching the collection.
  */
 export async function watchCollection(onChange) {
   try {
-    // Überprüfe, ob getMongoCollection definiert ist
-    if (typeof await getMongoCollection !== "function") {
-      console.error("getMongoCollection is not defined");
-      return;
-    }
-
+    // Get the MongoDB collection.
     const collection = await getMongoCollection();
+    
+    // Create a change stream for the collection.
     const changeStream = await collection.watch();
 
+    // Listen for changes in the collection.
     for await (const event of changeStream) {
-      const updatedShop = await collection.findOne({ _id: event.documentKey._id });
+      // Get the updated document from the collection.
+      const updatedDocument = await collection.findOne({ _id: event.documentKey._id });
+
+      // Call the onChange function if it is defined.
       if (typeof onChange === "function") {
-        onChange(updatedShop);
+        onChange(updatedDocument);
       }
-      console.log("Data changed:", updatedShop);
+
+      // Log that data has changed.
+      console.log("Data changed:", updatedDocument);
     }
 
-    console.log("Change stream closed");
-    changeStream.close();
-
+    // Return a function to stop watching the collection.
+    return () => {
+      changeStream.close();
+    };
   } catch (err) {
     console.error("Failed to watch collection", err);
   }
 }
+
 
 
 
