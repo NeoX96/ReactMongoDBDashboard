@@ -1,9 +1,8 @@
 import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
-import { getShopsData } from "../data/shopsData";
 import { useEffect, useState } from "react";
-import { realmLogin, watchCollection } from "../data/shopsData_live";
+import { watchCollection, getShopRevenuePieChart } from "../data/shopsData_live";
 
 const PieChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -11,44 +10,44 @@ const PieChart = ({ isDashboard = false }) => {
 
   const [shopData, setShopData] = useState([]);
 
+  // Lade die Daten aus der MongoDB-Sammlung, wenn die Komponente mountet
   useEffect(() => {
-    getShopsData().then((shops) => {
-      const formattedData = shops.documents.map((shop) => ({
-        id: shop.ShopName,
-        value: shop.Revenue,
-      }));
-      setShopData(formattedData);
-    });
+    const loadData = async () => {
+      const data = await getShopRevenuePieChart();
+      setShopData(data);
+    };
+    loadData();
+
+    return () => {
+      loadData();
+    }
+
   }, []);
 
   useEffect(() => {
-    if (shopData.length > 0) {
-    const fetchData = async () => {
-      const user = await realmLogin();
-      if (user) {
-        await watchCollection((updatedShop) => {
-          console.log('updatedShop', updatedShop);
-          console.log('shopData', shopData);
-          const updatedShopIndex = shopData.findIndex((shop) => {
-            console.log("shopID: ", shop.id);
-            return shop.id === updatedShop.ShopName;
-          });
-          console.log('updatedShopIndex', updatedShopIndex);
-          if (updatedShopIndex >= 0) {
-            const updatedData = [...shopData];
-            updatedData[updatedShopIndex] = {
-              id: updatedShop.ShopName,
-              value: updatedShop.Revenue,
-            };
-            console.log('updatedData', updatedData);
-            setShopData(updatedData);
-          }
-        });
-      }
+    const handleChange = updatedShop => {
+      setShopData(prevShopData => {
+        const index = prevShopData.findIndex(shop => shop.ShopName === updatedShop.ShopName);
+        if (index === -1) {
+          return prevShopData;
+        }
+        const updatedShopData = {
+          ShopName: updatedShop.ShopName,
+          Revenue: updatedShop.Revenue,
+        };
+        const newData = [...prevShopData];
+        newData[index] = updatedShopData;
+        return newData;
+      });
     };
-    fetchData();
-    }
-  }, [shopData]);
+    watchCollection(handleChange);
+
+    return () => {
+      watchCollection(handleChange);
+    };
+  }, []);
+  
+
 
   return (
     <ResponsivePie
