@@ -4,7 +4,7 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../components/Header";
 import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
-import { getShopsData } from "../data/shopsData";
+import { watchCollection, getSumOfRevenue, getShopsData } from "../data/shopsData_live";
 import { useEffect, useState } from "react";
 
 const Dashboard = () => {
@@ -12,14 +12,45 @@ const Dashboard = () => {
   const colors = tokens(theme.palette.mode);
 
   const [shopsData, setShopsData] = useState([]);
+  const [sumOfRevenue, setSumOfRevenue] = useState(0);
+
+  const loadData = async () => {
+    const data = await getShopsData();
+    const sum = await getSumOfRevenue();
+
+    setShopsData(data);
+    setSumOfRevenue(sum);
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await getShopsData();
-      setShopsData(data.documents);
-    }
-    fetchData();
+    loadData();
+
+    return () => {
+      loadData();
+    };
+
   }, []);
+
+  useEffect(() => {
+    // watch collection and use the function getShopsData und getSumOfRevenue
+    if (shopsData.length > 0) {
+      const handleChange = async () => {
+        await watchCollection(async (updatedShop) => {
+          const updatedShopIndex = shopsData.findIndex((shop) => shop.ShopName === updatedShop.ShopName);
+          console.log("ShopUpdated", updatedShopIndex);
+          if (updatedShopIndex >= 0) {
+            const updatedData = [...shopsData];
+            updatedData[updatedShopIndex] = updatedShop;
+            setShopsData(updatedData);
+          }
+        });
+      }
+
+      handleChange();
+    }
+  }, [shopsData]);
+
+
 
   return (
     <Box m="20px">
@@ -56,14 +87,14 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Generierte Einnahmen
+                Gesmte Einnahmen
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                
+                {sumOfRevenue} Mio. $
               </Typography>
             </Box>
             <Box>
@@ -124,7 +155,7 @@ const Dashboard = () => {
                 borderRadius="4px"
                 color="black"
               >
-                ${shop.Revenue}
+                ${shop.Revenue} Mio.
               </Box>
             </Box>
           ))}
