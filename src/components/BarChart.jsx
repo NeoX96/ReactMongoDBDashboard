@@ -1,30 +1,62 @@
-import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { getShopsData } from "../data/shopsData";
+import { useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
+import { watchCollection, getShopRevenuePieBarChart } from "../data/shopsData_live";
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [data, setData] = useState([]);
+  const [shopData, setShopData] = useState([]);
+
+  // Lädt die Daten aus der MongoDB-Sammlung
+  const loadData = async () => {
+    const data = await getShopRevenuePieBarChart();
+    setShopData(data);
+  };
 
 
+  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
   useEffect(() => {
-    getShopsData().then((shops) => {
-      const formattedData = shops.documents.map((shop) => ({
-        shopname: shop.ShopName,
-        Einnahmen: shop.Revenue,
-      }));
-      setData(formattedData);
-    });
+    loadData();
+
+    return () => {
+      loadData();
+    }
+
   }, []);
+
+  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
+  useEffect(() => {
+    if (shopData.length > 0) {
+    // Update shopData state when a shop revenue data changes in MongoDB collection
+    const handleChange = async () => {
+      await watchCollection((updatedShop) => {
+        // Get index of updated shop in shopData array
+        const updatedShopIndex = shopData.findIndex((shop) => shop.id === updatedShop.ShopName);
+        
+        // If updated shop is found in shopData array
+        if (updatedShopIndex >= 0) {
+          // Update shopData with new revenue data
+          const updatedData = [...shopData];
+          updatedData[updatedShopIndex] = {
+            id: updatedShop.ShopName,
+            value: updatedShop.Revenue,
+          };
+          setShopData(updatedData);
+        }
+      });
+    };
+
+    handleChange();
+    }
+  }, [shopData]);
 
 
   return (
     <ResponsiveBar
-      data={data}
+      data={shopData}
       theme={{
         axis: {
           domain: {
@@ -59,8 +91,7 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["Einnahmen"]}
-      indexBy="shopname"
+      
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
@@ -82,7 +113,7 @@ const BarChart = ({ isDashboard = false }) => {
       fill={[
         {
           match: {
-            id: "Einnahmen",
+            id: "value",
           },
           id: "lines",
         }
