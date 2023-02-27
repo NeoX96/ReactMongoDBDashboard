@@ -46,8 +46,11 @@ async function getMongoCollection() {
     throw new Error(`Failed to connect to database ${DATABASE_NAME}`);
   }
   const collection = db.collection(COLLECTION_NAME);
-  console.log("Collection:", collection);
-  
+
+  if (!collection) {
+    throw new Error(`Failed to connect to collection ${COLLECTION_NAME}`);
+  }
+
   return collection;
 }
 
@@ -106,7 +109,7 @@ export async function getShopRevenuePieBarChart() {
     value: Revenue,
   }));
 
-  console.log("Data:", formattedData);
+  console.log("DataforCharts: ", formattedData);
 
   return formattedData;
 }

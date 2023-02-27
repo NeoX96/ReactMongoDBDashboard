@@ -11,25 +11,24 @@ const BarChart = ({ isDashboard = false }) => {
   const [shopData, setShopData] = useState([]);
 
   // Lädt die Daten aus der MongoDB-Sammlung
-  const loadData = async () => {
-    const data = await getShopRevenuePieBarChart();
-    setShopData(data);
-  };
+
 
 
   // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
   useEffect(() => {
-    loadData();
+    const loadData = async () => {
+      const data = await getShopRevenuePieBarChart();
+      setShopData(data);
+    };
 
-    return () => {
       loadData();
-    }
+
 
   }, []);
 
   // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
   useEffect(() => {
-    if (shopData.length > 0) {
+    
     // Update shopData state when a shop revenue data changes in MongoDB collection
     const handleChange = async () => {
       await watchCollection((updatedShop) => {
@@ -49,8 +48,10 @@ const BarChart = ({ isDashboard = false }) => {
       });
     };
 
-    handleChange();
+    if (shopData.length > 0) {
+      handleChange();
     }
+
   }, [shopData]);
 
 

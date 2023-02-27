@@ -18,36 +18,36 @@ const Dashboard = () => {
     const data = await getShopsData();
     const sum = await getSumOfRevenue();
 
+    console.log("inital: ", data);
     setShopsData(data);
     setSumOfRevenue(sum);
   };
 
+  const handleChange = async () => {
+    watchCollection((updatedShop) => {
+      const updatedShopIndex = shopsData.findIndex((shop) => shop.ShopName === updatedShop.ShopName);
+      console.log("ShopUpdated", updatedShopIndex);
+      if (updatedShopIndex >= 0) {
+        const updatedData = [...shopsData];
+        updatedData[updatedShopIndex] = updatedShop;
+        setShopsData(updatedData);
+      }
+    });
+  }
+
+
   useEffect(() => {
     loadData();
 
-    return () => {
-      loadData();
-    };
-
   }, []);
 
-  useEffect(() => {
-    // watch collection and use the function getShopsData und getSumOfRevenue
-    if (shopsData.length > 0) {
-      const handleChange = async () => {
-        await watchCollection(async (updatedShop) => {
-          const updatedShopIndex = shopsData.findIndex((shop) => shop.ShopName === updatedShop.ShopName);
-          console.log("ShopUpdated", updatedShopIndex);
-          if (updatedShopIndex >= 0) {
-            const updatedData = [...shopsData];
-            updatedData[updatedShopIndex] = updatedShop;
-            setShopsData(updatedData);
-          }
-        });
-      }
 
+  useEffect(() => {
+
+    if (shopsData.length > 0) {
       handleChange();
     }
+
   }, [shopsData]);
 
 
