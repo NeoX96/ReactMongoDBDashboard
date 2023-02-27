@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ReactMongoDBDashboard/static/css/main.07a6e487.css",
+    "main.js": "/ReactMongoDBDashboard/static/js/main.c0adca83.js",
+    "index.html": "/ReactMongoDBDashboard/index.html",
+    "main.07a6e487.css.map": "/ReactMongoDBDashboard/static/css/main.07a6e487.css.map",
+    "main.c0adca83.js.map": "/ReactMongoDBDashboard/static/js/main.c0adca83.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07a6e487.css",
+    "static/js/main.c0adca83.js"
+  ]
+}
