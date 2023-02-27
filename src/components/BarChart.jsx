@@ -93,8 +93,8 @@ const BarChart = ({ isDashboard = false }) => {
         },
       }}
       
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-      padding={0.3}
+      margin={{ top: 30, right: 40, bottom: 50, left: 70 }}
+      padding={0.4}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={{ scheme: "nivo" }}
@@ -140,9 +140,9 @@ const BarChart = ({ isDashboard = false }) => {
         tickRotation: 0,
         legend: isDashboard ? undefined : "Einnahmen",
         legendPosition: "middle",
-        legendOffset: -50,
+        legendOffset: -55,
       }}
-      enableLabel={false}
+      enableLabel={true}
       labelSkipWidth={12}
       labelSkipHeight={12}
       labelTextColor={{
