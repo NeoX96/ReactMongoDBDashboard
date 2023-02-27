@@ -94,25 +94,30 @@ export async function watchCollection(onChange) {
 
 
 /**
- * Gibt die Daten der MongoDB-Collection zurück.
+ * Gibt die Daten der MongoDB-Collection zurück und sortiert sie nach Revenue absteigend.
  *  
- * @returns {array} Ein Array mit den Daten der MongoDB-Collection.
+ * @returns {array} Ein Array mit den sortierten Daten der MongoDB-Collection. ShopName und Revenue
  *  
  */
 export async function getShopRevenuePieBarChart() {
   const collection = await getMongoCollection();
-  const data = await collection.find();
+  const data = await collection.aggregate([
+    { $sort: { Revenue: -1 } },
+    {
+      $project: {
+        _id: 0,
+        id: "$ShopName",
+        label: "$ShopName",
+        value: "$Revenue",
+      },
+    },
+  ]);
 
-  const formattedData = data.map(({ ShopName, Revenue }) => ({
-    id: ShopName,
-    label: ShopName,
-    value: Revenue,
-  }));
+  console.log("DataforCharts: ", data);
 
-  console.log("DataforCharts: ", formattedData);
-
-  return formattedData;
+  return data;
 }
+
 
 
 /**
@@ -129,22 +134,18 @@ export async function getSumOfRevenue() {
   return data[0].sum;
 }
 
-
-// Q: was muss ich ändern, dass ich alle ShopNames, Countries, Revenues und Years bekomme?
-// A: Ich muss die Daten in einem Array speichern und dann in der Funktion getShopsData() zurückgeben.
-// erstelle mir eine neue Funktion, die die Daten aus der MongoDB holt und in einem Array speichert. verwende dabei aber aggregate() und nicht find()
-
-
+/**
+ * 
+ * @returns {Array} ShopName Country Revenue Year, sortiert nach Revenue absteigend
+ *
+ */
 export async function getShopsData() {
   const collection = await getMongoCollection();
 
-// get ShopName, Country, Revenue and Year from MongoDB. Dont use $group
   const data = await collection.aggregate([
     { $project: { ShopName: 1, Country: 1, Revenue: 1, Year: 1 } },
-    { $sort: { Revenue: -1 } },
-    
+    { $sort: { Revenue: -1 } },    
   ]);
-
 
   console.log("DataShops:", data);
   return data;
