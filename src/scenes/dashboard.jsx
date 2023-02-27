@@ -13,6 +13,7 @@ const Dashboard = () => {
 
   const [shopsData, setShopsData] = useState([]);
   const [sumOfRevenue, setSumOfRevenue] = useState(0);
+  const [changed, setChanged] = useState(false);
 
   const loadData = async () => {
     const data = await getShopsData();
@@ -30,9 +31,17 @@ const Dashboard = () => {
       if (updatedShopIndex >= 0) {
         const updatedData = [...shopsData];
         updatedData[updatedShopIndex] = updatedShop;
+
         setShopsData(updatedData);
+        setChanged(true)
       }
     });
+
+    if (changed) {
+      const sum = await getSumOfRevenue();
+      setSumOfRevenue(sum);
+      setChanged(false);
+    }
   }
 
 
