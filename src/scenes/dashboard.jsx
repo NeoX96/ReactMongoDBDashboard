@@ -4,7 +4,6 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../components/Header";
 import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
-import ProgressCircle from "../components/ProgressCircle";
 import { getShopsData } from "../data/shopsData";
 import { useEffect, useState } from "react";
 
@@ -141,7 +140,7 @@ const Dashboard = () => {
           p="30px"
         >
           <Typography variant="h5" fontWeight="600">
-            Alle Einnahmen
+            anderes Chart
           </Typography>
           <Box
             display="flex"
@@ -149,15 +148,8 @@ const Dashboard = () => {
             alignItems="center"
             mt="25px"
           >
-            <ProgressCircle size="125" />
-            <Typography
-              variant="h5"
-              color={colors.greenAccent[500]}
-              sx={{ mt: "15px" }}
-            >
-              $48,352 revenue generated
-            </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
+
+
           </Box>
         </Box>
         <Box
@@ -170,7 +162,7 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-            Sales Quantity
+            Pie Chart
           </Typography>
           <Box height="250px" mt="-20px">
             {/*call piechart mit dashboard true*/ }
