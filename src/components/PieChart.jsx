@@ -10,12 +10,15 @@ const PieChart = ({ isDashboard = false }) => {
 
   const [shopData, setShopData] = useState([]);
 
-  // Lade die Daten aus der MongoDB-Sammlung, wenn die Komponente mountet
+  // Lädt die Daten aus der MongoDB-Sammlung
+  const loadData = async () => {
+    const data = await getShopRevenuePieChart();
+    setShopData(data);
+  };
+
+
+  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
   useEffect(() => {
-    const loadData = async () => {
-      const data = await getShopRevenuePieChart();
-      setShopData(data);
-    };
     loadData();
 
     return () => {
@@ -24,30 +27,32 @@ const PieChart = ({ isDashboard = false }) => {
 
   }, []);
 
+  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
   useEffect(() => {
-    const handleChange = updatedShop => {
-      setShopData(prevShopData => {
-        const index = prevShopData.findIndex(shop => shop.ShopName === updatedShop.ShopName);
-        if (index === -1) {
-          return prevShopData;
+    if (shopData.length > 0) {
+    // Update shopData state when a shop revenue data changes in MongoDB collection
+    const handleChange = async () => {
+      await watchCollection((updatedShop) => {
+        // Get index of updated shop in shopData array
+        const updatedShopIndex = shopData.findIndex((shop) => shop.id === updatedShop.ShopName);
+        
+        // If updated shop is found in shopData array
+        if (updatedShopIndex >= 0) {
+          // Update shopData with new revenue data
+          const updatedData = [...shopData];
+          updatedData[updatedShopIndex] = {
+            id: updatedShop.ShopName,
+            value: updatedShop.Revenue,
+          };
+          setShopData(updatedData);
         }
-        const updatedShopData = {
-          ShopName: updatedShop.ShopName,
-          Revenue: updatedShop.Revenue,
-        };
-        const newData = [...prevShopData];
-        newData[index] = updatedShopData;
-        return newData;
       });
     };
-    watchCollection(handleChange);
 
-    return () => {
-      watchCollection(handleChange);
-    };
-  }, []);
+    handleChange();
+    }
+  }, [shopData]);
   
-
 
   return (
     <ResponsivePie
@@ -86,26 +91,25 @@ const PieChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+      margin={{
+        top: isDashboard ? 20 : 30,
+        right: 80,
+        bottom: isDashboard ? 20 : 80,
+        left: 80,
+      }}
       innerRadius={0.5}
       padAngle={0.7}
-      cornerRadius={3}
+      cornerRadius={5}
       activeOuterRadiusOffset={8}
       borderColor={{
         from: "color",
         modifiers: [["darker", 0.2]],
       }}
-      arcLinkLabelsSkipAngle={10}
+      arcLinkLabelsSkipAngle={isDashboard ? 12 : 9}
       arcLinkLabelsTextColor={colors.grey[100]}
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
       enableArcLabels={false}
-      arcLabelsRadiusOffset={0.4}
-      arcLabelsSkipAngle={7}
-      arcLabelsTextColor={{
-        from: "color",
-        modifiers: [["darker", 2]],
-      }}
       legends={
         isDashboard
           ? []
