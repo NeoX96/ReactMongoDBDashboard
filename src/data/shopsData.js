@@ -1,23 +1,25 @@
 export async function getShopsData() {
-  const response = await fetch('https://eu-central-1.aws.data.mongodb-api.com/app/data-ngpoq/endpoint/data/v1/action/find', {
+  const data = JSON.stringify({
+    "collection": "10Shops",
+    "database": "Top10",
+    "dataSource": "DBDatabase",
+    "projection": {}
+  });
+
+  const response = await fetch('https://eu-central-1.aws.data.mongodb-api.com/app/data-uilqj/endpoint/data/v1/action/find', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Request-Headers': '*',
-      'api-key': '2Xyb6zk9mkSNb1knmcAEdX1GCahmGhyi3YMFM8qo9YW86hoVEigf2GGTe8iqNpG8',
+      'api-key': '7PodJEFumzYtvIBgsWkiBMp5N1ifzHkrRMO9XTvRSxVBH5TIq5kJdXhLxE7RKWKM',
     },
-    body: JSON.stringify({
-      "collection": "10Shops",
-      "database": "Top10",
-      "dataSource": "DBDatabase",
-      "projection": {
-        "_id": 0
-      }
-    })
+    body: data
   });
+
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
+
   const shopsData = await response.json();
   return shopsData;
 }
