@@ -2,7 +2,7 @@ import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
-import { watchCollection, getShopRevenuePieChart } from "../data/shopsData_live";
+import { watchCollection, getShopRevenuePieBarChart } from "../data/shopsData_live";
 
 const PieChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -12,7 +12,7 @@ const PieChart = ({ isDashboard = false }) => {
 
   // Lädt die Daten aus der MongoDB-Sammlung
   const loadData = async () => {
-    const data = await getShopRevenuePieChart();
+    const data = await getShopRevenuePieBarChart();
     setShopData(data);
   };
 
