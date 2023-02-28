@@ -4,6 +4,7 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../components/Header";
 import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
+import FunnelChart from "../components/FunnelChart";
 import { watchCollection, getSumOfRevenue, getShopsData } from "../data/shopsData_live";
 import { useEffect, useState } from "react";
 
@@ -106,7 +107,7 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                {sumOfRevenue} Mio. $
+                {sumOfRevenue} Mio. €
               </Typography>
             </Box>
             <Box>
@@ -171,34 +172,27 @@ const Dashboard = () => {
                 borderRadius="4px"
                 color="black"
               >
-                ${shop.Revenue} Mio.
+                {shop.Revenue} Mio. €
               </Box>
             </Box>
           ))}
         </Box>
 
         {/* ROW 2 */}
-        <Box>
-        </Box>
         <Box
-          gridColumn="span 5"
+          gridColumn="span 7"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
+          height="450px"
           boxShadow={1}
           borderRadius="10px"
         >
           <Typography variant="h5" fontWeight="600">
-            anderes Chart
+            Funnel Chart
           </Typography>
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            mt="25px"
-          >
-
-
+          <Box height="400px" mt="5px">
+            <FunnelChart />
           </Box>
         </Box>
         <Box

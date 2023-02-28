@@ -115,17 +115,17 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+              <Item
+              title="Funnel Chart"
+              to="/funnel"
+              icon={<FilterAltOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             <Item
               title="Line Chart"
               to="/line"
               icon={<TimelineOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-              <Item
-              title="Funnel Chart"
-              to="/data"
-              icon={<FilterAltOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
