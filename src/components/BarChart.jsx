@@ -2,7 +2,7 @@ import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
-import { watchCollection, getShopRevenuePieBarChart } from "../data/shopsData_live";
+import { watchCollection, getShopRevenueChartData } from "../data/shopsData_live";
 
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -14,7 +14,7 @@ const BarChart = ({ isDashboard = false }) => {
   // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Collection aufgerufen
   useEffect(() => {
     const loadData = async () => {
-      const data = await getShopRevenuePieBarChart();
+      const data = await getShopRevenueChartData();
       setShopData(data);
     };
 

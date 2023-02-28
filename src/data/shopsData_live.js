@@ -88,6 +88,7 @@ export async function watchCollection(onChange) {
     };
   } catch (err) {
     console.error("Failed to watch collection", err);
+    // alert("Failed to watch collection", err);
   }
 }
 
@@ -99,7 +100,7 @@ export async function watchCollection(onChange) {
  * @returns {array} Ein Array mit den sortierten Daten der MongoDB-Collection. ShopName und Revenue
  *  
  */
-export async function getShopRevenuePieBarChart() {
+export async function getShopRevenueChartData() {
   const collection = await getMongoCollection();
   const data = await collection.aggregate([
     { $sort: { Revenue: -1 } },
@@ -112,8 +113,6 @@ export async function getShopRevenuePieBarChart() {
       },
     },
   ]);
-
-  console.log("DataforCharts: ", data);
 
   return data;
 }
