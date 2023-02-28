@@ -61,6 +61,7 @@ const PieChart = ({ isDashboard = false }) => {
     <ResponsivePie
       data={shopData}
       theme={{
+        fontSize: isDashboard ? 12 : 14,
         axis: {
           domain: {
             line: {
@@ -113,6 +114,9 @@ const PieChart = ({ isDashboard = false }) => {
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
       enableArcLabels={false}
+      colors={{ 
+        scheme: 'paired' 
+      }}
       legends={
         isDashboard
           ? []
@@ -124,12 +128,12 @@ const PieChart = ({ isDashboard = false }) => {
                 translateX: 0,
                 translateY: 56,
                 itemsSpacing: 0,
-                itemWidth: 100,
+                itemWidth: 120,
                 itemHeight: 18,
                 itemTextColor: "#999",
                 itemDirection: "left-to-right",
                 itemOpacity: 1,
-                symbolSize: 18,
+                symbolSize: 14,
                 symbolShape: "circle",
                 effects: [
                   {
