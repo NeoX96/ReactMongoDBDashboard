@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ReactMongoDBDashboard/static/css/main.07a6e487.css",
-    "main.js": "/ReactMongoDBDashboard/static/js/main.dc1d0df7.js",
+    "main.js": "/ReactMongoDBDashboard/static/js/main.5d43f8c8.js",
     "index.html": "/ReactMongoDBDashboard/index.html",
     "main.07a6e487.css.map": "/ReactMongoDBDashboard/static/css/main.07a6e487.css.map",
-    "main.dc1d0df7.js.map": "/ReactMongoDBDashboard/static/js/main.dc1d0df7.js.map"
+    "main.5d43f8c8.js.map": "/ReactMongoDBDashboard/static/js/main.5d43f8c8.js.map"
   },
   "entrypoints": [
     "static/css/main.07a6e487.css",
-    "static/js/main.dc1d0df7.js"
+    "static/js/main.5d43f8c8.js"
   ]
 }
