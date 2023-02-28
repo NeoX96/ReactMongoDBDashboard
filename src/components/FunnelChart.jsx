@@ -50,6 +50,28 @@ const FunnelChart = () => {
       
     }, [shopData]);
 
+    const handleChange = async () => {
+      watchCollection((updatedShop) => {
+        // Get index of updated shop in shopData array
+        const updatedShopIndex = shopData.findIndex((shop) => shop.id === updatedShop.ShopName);
+
+        // If updated shop is found in shopData array
+        if (updatedShopIndex >= 0) {
+          // Update shopData with new revenue data
+          const updatedData = [...shopData];
+          updatedData[updatedShopIndex] = {
+            id: updatedShop.ShopName,
+            value: updatedShop.Revenue,
+          };
+          setShopData(updatedData);
+        }
+      });
+    };
+
+    if (shopData.length > 0) {
+      handleChange();
+    }
+
 
   return (
     <ResponsiveFunnel
