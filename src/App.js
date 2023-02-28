@@ -1,15 +1,17 @@
-import { useState, Suspense } from "react";
+import { useState, Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
-import Bar from "./scenes/bar";
-import Line from "./scenes/line";
-import Pie from "./scenes/pie";
-import Funnel from "./scenes/funnel";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import CircularProgress from "@mui/material/CircularProgress";
+
+// Use lazy loading for the scenes
+const Dashboard = lazy(() => import("./scenes/dashboard"));
+const Bar = lazy(() => import("./scenes/bar"));
+const Line = lazy(() => import("./scenes/line"));
+const Pie = lazy(() => import("./scenes/pie"));
+const Funnel = lazy(() => import("./scenes/funnel"));
 
 function App() {
   const [theme, colorMode] = useMode();
