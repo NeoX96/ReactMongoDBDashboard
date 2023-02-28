@@ -1,4 +1,4 @@
-import { Box, IconButton, useTheme, Typography } from "@mui/material";
+import { Box, IconButton, useTheme, Typography, Link } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
@@ -15,9 +15,10 @@ const Topbar = () => {
       <Typography
                 variant="h1"
                 fontWeight="600"
-                color={colors.grey[100]}
               >
+                <Link href="https://de.statista.com/prognosen/646009/top-online-shops-deutschland-ecommercedb" target="_blank" rel="noopener noreferrer" underline="none" color={colors.grey[100]}>
                 Umsatzstärkste Online-Shops in Deutschland im Jahr 2021 (in Millionen Euro) 
+                </Link>
               </Typography>
       </Box>
 
