@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Typography, useTheme, Link } from "@mui/material";
 import { tokens } from "../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../components/Header";
@@ -156,7 +156,9 @@ const Dashboard = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {shop.ShopName}
+                    <Link href={`https://${shop.ShopName}`} target="_blank" rel="noopener noreferrer" underline="none" color={colors.greenAccent[500]}>
+                      {shop.ShopName}
+                    </Link>
                 </Typography>
                 <Typography color={colors.grey[100]}>
                   {shop.Country}
