@@ -11,18 +11,17 @@ const Topbar = () => {
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
-      {/* SEARCH BAR */}
       <Box>
       <Typography
                 variant="h1"
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Top 10 Online Shops - 2021
+                Umsatzstärkste Online-Shops in Deutschland im Jahr 2021 (in Millionen Euro) 
               </Typography>
       </Box>
 
-      {/* ICONS */}
+      {/* ICON */}
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode} fontSize="20px" >
           {theme.palette.mode === "dark" ? (
