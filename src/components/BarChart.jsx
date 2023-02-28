@@ -10,11 +10,8 @@ const BarChart = ({ isDashboard = false }) => {
 
   const [shopData, setShopData] = useState([]);
 
-  // Lädt die Daten aus der MongoDB-Sammlung
 
-
-
-  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
+  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Collection aufgerufen
   useEffect(() => {
     const loadData = async () => {
       const data = await getShopRevenuePieBarChart();
@@ -26,7 +23,7 @@ const BarChart = ({ isDashboard = false }) => {
 
   }, []);
 
-  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Sammlung aufgerufen
+  // Wird beim ersten Laden der Seite und beim Ändern der Daten in der MongoDB-Collection aufgerufen
   useEffect(() => {
     
     // Update shopData state when a shop revenue data changes in MongoDB collection
