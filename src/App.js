@@ -6,7 +6,7 @@ import Dashboard from "./scenes/dashboard";
 import Bar from "./scenes/bar";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
-import Data from "./scenes/funnel";
+import Funnel from "./scenes/funnel";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -29,7 +29,7 @@ function App() {
                 <Route path="/bar" element={<Bar />} />
                 <Route path="/pie" element={<Pie />} />
                 <Route path="/line" element={<Line />} />
-                <Route path="/data" element={<Data />} />
+                <Route path="/funnel" element={<Funnel />} />
                 <Route path="*" element={<h1>404</h1>} />
               </Routes>
             </Suspense>
