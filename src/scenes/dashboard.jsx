@@ -82,6 +82,8 @@ const Dashboard = () => {
           gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          boxShadow={1}
+          borderRadius="10px"
         >
           <Box
             mt="25px"
@@ -89,6 +91,7 @@ const Dashboard = () => {
             display="flex "
             justifyContent="space-between"
             alignItems="center"
+            
           >
             <Box>
               <Typography
@@ -123,6 +126,8 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
+          boxShadow={1}
+          borderRadius="10px"
         >
           <Box
             display="flex"
@@ -178,6 +183,8 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
+          boxShadow={1}
+          borderRadius="10px"
         >
           <Typography variant="h5" fontWeight="600">
             anderes Chart
@@ -196,6 +203,9 @@ const Dashboard = () => {
           gridColumn="span 5"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          height="450px"
+          boxShadow={1}
+          borderRadius="10px"
         >
           <Typography
             variant="h5"
@@ -204,7 +214,7 @@ const Dashboard = () => {
           >
             Pie Chart
           </Typography>
-          <Box height="250px" mt="-20px">
+          <Box height="400px" mt="-20px">
             {/*call piechart mit dashboard true*/ }
             <PieChart isDashboard={true} />
           </Box>
