@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography, useTheme, Link } from "@mui/material";
+import { Box, IconButton, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
 import { tokens } from "../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../components/Header";
@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isSmallScreen = useMediaQuery('(max-width:768px)');
 
   const [shopsData, setShopsData] = useState([]);
   const [sumOfRevenue, setSumOfRevenue] = useState(0);
@@ -73,7 +74,7 @@ const Dashboard = () => {
       {/* GRID & CHARTS */}
       <Box
         display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
+        gridTemplateColumns={isSmallScreen ? 'repeat(6, 1fr)' : 'repeat(12, 1fr)'}
         gridAutoRows="140px"
         gap="20px"
       >
@@ -179,8 +180,9 @@ const Dashboard = () => {
         </Box>
 
         {/* ROW 2 */}
+        <Box></Box>
         <Box
-          gridColumn="span 7"
+          gridColumn="span 5"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
