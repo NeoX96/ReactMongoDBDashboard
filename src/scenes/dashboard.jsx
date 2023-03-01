@@ -174,9 +174,8 @@ const Dashboard = () => {
         </Box>
 
         {/* ROW 2 */}
-        <Box></Box>
         <Box
-          gridColumn="span 5"
+          gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"
@@ -209,6 +208,30 @@ const Dashboard = () => {
           <Box height="400px" mt="-20px">
             {/*call piechart mit dashboard true*/ }
             <PieChart isDashboard={true} />
+          </Box>
+        </Box>
+
+        <Box           
+          gridColumn="span 3"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+          overflow="auto"
+          boxShadow={1}
+          borderRadius="4px"
+          height="450px">
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ padding: "30px 30px 0 30px" }}
+            color={colors.greenAccent[500]}
+            fontSize={20}
+          >
+            Hinweise und Anmerkungen
+          </Typography>
+          <Box height="200px" mt="-20px">
+            <Typography m="30px" fontSize={16}>
+            Der E-Commerce-Markt umfasst den Verkauf von physischen Gütern über einen digitalen Kanal an private Endnutzer (B2C). In die Betrachtung fließen sowohl Käufe über Desktop-Computer (inkl. Notebooks oder Laptops) als auch Käufe über mobile Endgeräte wie Smartphones oder Tablets ein. Nicht enthalten sind ausschließliche Marktplätze, digital vertriebene Dienstleistungen (siehe hierfür: eServices), digitale Medieninhalte als Download oder Stream, digital vertriebene Güter in B2B-Märkten sowie der digitale An- oder Weiterverkauf von gebrauchter, defekter oder reparierter Ware (re-commerce und C2C). Alle monetären Werte beziehen sich auf Netto-Umsätze, Versandkosten werden nicht berücksichtigt.
+            </Typography>
           </Box>
         </Box>
 
