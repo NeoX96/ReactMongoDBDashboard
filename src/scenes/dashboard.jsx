@@ -230,10 +230,11 @@ const Dashboard = () => {
           </Typography>
           <Box height="200px" mt="-20px">
             <Typography m="30px" fontSize={16}>
-              Der E-Commerce-Markt umfasst den Verkauf von physischen Gütern über einen digitalen Kanal an private Endnutzer (B2C).<br /><br />
+              Der <Link color={colors.greenAccent[400]} target="_blank" rel="noopener noreferrer" underline="none" href="https://ecommercedb.com/">E-Commerce-Markt</Link> umfasst den Verkauf von physischen Gütern über einen digitalen Kanal an private Endnutzer (B2C).<br /><br />
               In die Betrachtung fließen sowohl Käufe über Desktop-Computer (inkl. Notebooks oder Laptops) als auch Käufe über mobile Endgeräte wie Smartphones oder Tablets ein.<br /><br />
               Nicht enthalten sind ausschließliche Marktplätze, digital vertriebene Dienstleistungen (siehe hierfür: eServices), digitale Medieninhalte als Download oder Stream, digital vertriebene Güter in B2B-Märkten sowie der digitale An- oder Weiterverkauf von gebrauchter, defekter oder reparierter Ware (re-commerce und C2C).<br /><br />
-              Alle monetären Werte beziehen sich auf Netto-Umsätze, Versandkosten werden nicht berücksichtigt.
+              Alle monetären Werte beziehen sich auf Netto-Umsätze, Versandkosten werden nicht berücksichtigt.<br /><br />
+              Für weitere Informationen besuchen Sie bitte die <Link color={colors.greenAccent[400]} target="_blank" rel="noopener noreferrer" underline="none" href="https://ecommercedb.com/">Methodik Seite auf ecommerceDB.com</Link>.<br />
             </Typography>
           </Box>
         </Box>
