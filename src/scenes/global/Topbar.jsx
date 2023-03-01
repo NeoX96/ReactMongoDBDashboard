@@ -12,14 +12,15 @@ const Topbar = () => {
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       <Box>
-      <Typography
-                variant="h1"
-                fontWeight="600"
-              >
-                <Link href="https://de.statista.com/prognosen/646009/top-online-shops-deutschland-ecommercedb" target="_blank" rel="noopener noreferrer" underline="none" color={colors.grey[100]}>
-                Umsatzstärkste Online-Shops in Deutschland im Jahr 2021 (in Millionen Euro) 
-                </Link>
-              </Typography>
+        <Typography
+          variant="h1"
+          fontWeight="600"
+          >
+            <Link href="https://de.statista.com/prognosen/646009/top-online-shops-deutschland-ecommercedb" target="_blank" rel="noopener noreferrer" underline="none" color={colors.grey[100]}>
+              Umsatzstärkste Online-Shops in Deutschland im Jahr 2021 <br />
+              (in Millionen Euro) 
+            </Link>
+        </Typography>
       </Box>
 
       {/* ICON */}

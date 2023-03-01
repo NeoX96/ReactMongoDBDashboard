@@ -85,7 +85,7 @@ const Dashboard = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           boxShadow={1}
-          borderRadius="10px"
+          borderRadius="4px"
         >
           <Box
             mt="25px"
@@ -129,7 +129,7 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           overflow="auto"
           boxShadow={1}
-          borderRadius="10px"
+          borderRadius="4px"
         >
           <Box
             display="flex"
@@ -188,7 +188,7 @@ const Dashboard = () => {
           p="30px"
           height="450px"
           boxShadow={1}
-          borderRadius="10px"
+          borderRadius="4px"
         >
           <Typography variant="h5" fontWeight="600">
             Funnel Chart
@@ -203,7 +203,7 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
           height="450px"
           boxShadow={1}
-          borderRadius="10px"
+          borderRadius="4px"
         >
           <Typography
             variant="h5"
