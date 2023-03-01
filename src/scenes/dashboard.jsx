@@ -59,7 +59,7 @@ const Dashboard = () => {
       handleChange();
     }
 
-  }, [shopsData]);
+  }, [shopsData, handleChange]);
 
 
 
