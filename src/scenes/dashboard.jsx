@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
+import { Box, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
 import { tokens } from "../theme";
 import Header from "../components/Header";
 import BarChart from "../components/BarChart";
