@@ -97,9 +97,9 @@ const PieChart = ({ isDashboard = false }) => {
       }}
       margin={{
         top: isDashboard ? 20 : 30,
-        right: 80,
+        right: isDashboard ? 110 : 80,
         bottom: isDashboard ? 20 : 80,
-        left: 80,
+        left: isDashboard ? 140 : 80,
       }}
       innerRadius={0.5}
       padAngle={0.7}
