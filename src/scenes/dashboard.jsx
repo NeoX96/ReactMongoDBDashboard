@@ -1,6 +1,5 @@
 import { Box, IconButton, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
 import { tokens } from "../theme";
-import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../components/Header";
 import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
@@ -67,7 +66,7 @@ const Dashboard = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Dashboard" subtitle="Valentin" />
+        <Header title="Dashboard" subtitle="Datenvisualisierung der Umsatzstärksten Online-Shops aus dem Jahr 2021" />
 
       </Box>
 
@@ -111,13 +110,8 @@ const Dashboard = () => {
                 {sumOfRevenue} Mio. €
               </Typography>
             </Box>
-            <Box>
-              <IconButton>
-                <DownloadOutlinedIcon
-                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
-                />
-              </IconButton>
-            </Box>
+
+
           </Box>
           <Box height="250px" m="-20px 0 0 0">
             <BarChart />
