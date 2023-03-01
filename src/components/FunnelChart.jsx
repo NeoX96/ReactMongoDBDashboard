@@ -101,10 +101,10 @@ const FunnelChart = () => {
                 ]
             ]
         }}
-        beforeSeparatorLength={20}
-        beforeSeparatorOffset={20}
-        afterSeparatorLength={20}
-        afterSeparatorOffset={20}
+        beforeSeparatorLength={5}
+        beforeSeparatorOffset={5}
+        afterSeparatorLength={5}
+        afterSeparatorOffset={5}
         currentPartSizeExtension={15}
         currentBorderWidth={8}
         motionConfig="wobbly"
