@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactMongoDBDashboard/static/css/main.07a6e487.css",
-    "main.js": "/ReactMongoDBDashboard/static/js/main.241ce2be.js",
+    "main.js": "/ReactMongoDBDashboard/static/js/main.1dbdf3db.js",
     "static/js/667.e4455a5e.chunk.js": "/ReactMongoDBDashboard/static/js/667.e4455a5e.chunk.js",
     "static/js/132.0c7e36df.chunk.js": "/ReactMongoDBDashboard/static/js/132.0c7e36df.chunk.js",
     "static/js/43.312698f1.chunk.js": "/ReactMongoDBDashboard/static/js/43.312698f1.chunk.js",
@@ -16,7 +16,7 @@
     "static/media/sidebar.png": "/ReactMongoDBDashboard/static/media/sidebar.42e4efb568a15482c5e1.png",
     "index.html": "/ReactMongoDBDashboard/index.html",
     "main.07a6e487.css.map": "/ReactMongoDBDashboard/static/css/main.07a6e487.css.map",
-    "main.241ce2be.js.map": "/ReactMongoDBDashboard/static/js/main.241ce2be.js.map",
+    "main.1dbdf3db.js.map": "/ReactMongoDBDashboard/static/js/main.1dbdf3db.js.map",
     "667.e4455a5e.chunk.js.map": "/ReactMongoDBDashboard/static/js/667.e4455a5e.chunk.js.map",
     "132.0c7e36df.chunk.js.map": "/ReactMongoDBDashboard/static/js/132.0c7e36df.chunk.js.map",
     "43.312698f1.chunk.js.map": "/ReactMongoDBDashboard/static/js/43.312698f1.chunk.js.map",
@@ -31,6 +31,6 @@
   },
   "entrypoints": [
     "static/css/main.07a6e487.css",
-    "static/js/main.241ce2be.js"
+    "static/js/main.1dbdf3db.js"
   ]
 }
