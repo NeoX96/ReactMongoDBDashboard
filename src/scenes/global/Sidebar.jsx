@@ -9,7 +9,6 @@ import sidebarPicture from "./assests/sidebar.png";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
@@ -121,13 +120,6 @@ const Sidebar = () => {
               title="Funnel Chart"
               to="/funnel"
               icon={<FilterAltOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Line Chart"
-              to="/line"
-              icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
