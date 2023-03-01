@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/ReactMongoDBDashboard/static/css/main.07a6e487.css",
-    "main.js": "/ReactMongoDBDashboard/static/js/main.ef91a6a5.js",
-    "static/js/667.450075a9.chunk.js": "/ReactMongoDBDashboard/static/js/667.450075a9.chunk.js",
+    "main.js": "/ReactMongoDBDashboard/static/js/main.5989aea9.js",
+    "static/js/667.c5c7e306.chunk.js": "/ReactMongoDBDashboard/static/js/667.c5c7e306.chunk.js",
     "static/js/132.0c7e36df.chunk.js": "/ReactMongoDBDashboard/static/js/132.0c7e36df.chunk.js",
     "static/js/43.312698f1.chunk.js": "/ReactMongoDBDashboard/static/js/43.312698f1.chunk.js",
-    "static/js/15.0869817b.chunk.js": "/ReactMongoDBDashboard/static/js/15.0869817b.chunk.js",
-    "static/js/430.96fedb5c.chunk.js": "/ReactMongoDBDashboard/static/js/430.96fedb5c.chunk.js",
+    "static/js/15.e71436a7.chunk.js": "/ReactMongoDBDashboard/static/js/15.e71436a7.chunk.js",
+    "static/js/430.70d42a41.chunk.js": "/ReactMongoDBDashboard/static/js/430.70d42a41.chunk.js",
     "static/js/513.e002fdbb.chunk.js": "/ReactMongoDBDashboard/static/js/513.e002fdbb.chunk.js",
     "static/js/606.6e833039.chunk.js": "/ReactMongoDBDashboard/static/js/606.6e833039.chunk.js",
     "static/js/126.57016751.chunk.js": "/ReactMongoDBDashboard/static/js/126.57016751.chunk.js",
@@ -16,12 +16,12 @@
     "static/media/sidebar.png": "/ReactMongoDBDashboard/static/media/sidebar.42e4efb568a15482c5e1.png",
     "index.html": "/ReactMongoDBDashboard/index.html",
     "main.07a6e487.css.map": "/ReactMongoDBDashboard/static/css/main.07a6e487.css.map",
-    "main.ef91a6a5.js.map": "/ReactMongoDBDashboard/static/js/main.ef91a6a5.js.map",
-    "667.450075a9.chunk.js.map": "/ReactMongoDBDashboard/static/js/667.450075a9.chunk.js.map",
+    "main.5989aea9.js.map": "/ReactMongoDBDashboard/static/js/main.5989aea9.js.map",
+    "667.c5c7e306.chunk.js.map": "/ReactMongoDBDashboard/static/js/667.c5c7e306.chunk.js.map",
     "132.0c7e36df.chunk.js.map": "/ReactMongoDBDashboard/static/js/132.0c7e36df.chunk.js.map",
     "43.312698f1.chunk.js.map": "/ReactMongoDBDashboard/static/js/43.312698f1.chunk.js.map",
-    "15.0869817b.chunk.js.map": "/ReactMongoDBDashboard/static/js/15.0869817b.chunk.js.map",
-    "430.96fedb5c.chunk.js.map": "/ReactMongoDBDashboard/static/js/430.96fedb5c.chunk.js.map",
+    "15.e71436a7.chunk.js.map": "/ReactMongoDBDashboard/static/js/15.e71436a7.chunk.js.map",
+    "430.70d42a41.chunk.js.map": "/ReactMongoDBDashboard/static/js/430.70d42a41.chunk.js.map",
     "513.e002fdbb.chunk.js.map": "/ReactMongoDBDashboard/static/js/513.e002fdbb.chunk.js.map",
     "606.6e833039.chunk.js.map": "/ReactMongoDBDashboard/static/js/606.6e833039.chunk.js.map",
     "126.57016751.chunk.js.map": "/ReactMongoDBDashboard/static/js/126.57016751.chunk.js.map",
@@ -31,6 +31,6 @@
   },
   "entrypoints": [
     "static/css/main.07a6e487.css",
-    "static/js/main.ef91a6a5.js"
+    "static/js/main.5989aea9.js"
   ]
 }
